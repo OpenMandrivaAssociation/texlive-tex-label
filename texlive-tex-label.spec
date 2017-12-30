@@ -5,8 +5,8 @@
 # catalog-license lppl1.3
 # catalog-version undef
 Name:		texlive-tex-label
-Version:	20091214
-Release:	10
+Version:	20170414
+Release:	1
 Summary:	Place a classification on each page of a document
 Group:		Publishing
 URL:		http://www.ctan.org/tex-archive/macros/latex/contrib/tex-label
