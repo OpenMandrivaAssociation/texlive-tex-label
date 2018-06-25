@@ -5,7 +5,7 @@
 # catalog-license lppl1.3
 # catalog-version undef
 Name:		texlive-tex-label
-Version:	20170414
+Version:	20180303
 Release:	1
 Summary:	Place a classification on each page of a document
 Group:		Publishing
