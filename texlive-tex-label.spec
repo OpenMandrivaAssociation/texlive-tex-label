@@ -1,48 +1,21 @@
-Name:		texlive-tex-label
-Version:	16372
-Release:	2
+%global tl_name tex-label
+%global tl_revision 16372
+
+Name:		texlive-%{tl_name}
+Version:	%{tl_revision}
+Release:	1
 Summary:	Place a classification on each page of a document
 Group:		Publishing
 URL:		https://www.ctan.org/tex-archive/macros/latex/contrib/tex-label
-License:	LPPL1.3
-Source0:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/tex-label.r%{version}.tar.xz
-Source1:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/tex-label.doc.r%{version}.tar.xz
-Source2:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/tex-label.source.r%{version}.tar.xz
+License:	lppl1.3
+Source0:	https://mirrors.ctan.org/systems/texlive/tlnet/archive/tex-label.r%{tl_revision}.tar.xz
+Source1:	https://mirrors.ctan.org/systems/texlive/tlnet/archive/tex-label.doc.r%{tl_revision}.tar.xz
+Source2:	https://mirrors.ctan.org/systems/texlive/tlnet/archive/tex-label.source.r%{tl_revision}.tar.xz
 BuildArch:	noarch
-BuildRequires:	texlive-tlpkg
-Requires(pre):	texlive-tlpkg
-Requires(post):	texlive-kpathsea
+BuildSystem:	texlive
+Provides:	texlive(%{tl_name}) = %{tl_revision}
 
 %description
-Enables the user to place a 'classification' label on each
-page, at the bottom to the right of the page number.
+Enables the user to place a 'classification' label on each page, at the
+bottom to the right of the page number
 
-%post
-%{_sbindir}/texlive.post
-
-%postun
-if [ $1 -eq 0 ]; then
-	%{_sbindir}/texlive.post
-fi
-
-#-----------------------------------------------------------------------
-%files
-%{_texmfdistdir}/tex/latex/tex-label/tex-label.sty
-%doc %{_texmfdistdir}/doc/latex/tex-label/README
-%doc %{_texmfdistdir}/doc/latex/tex-label/tex-label-demo.pdf
-%doc %{_texmfdistdir}/doc/latex/tex-label/tex-label-demo.tex
-%doc %{_texmfdistdir}/doc/latex/tex-label/tex-label-doc.pdf
-%doc %{_texmfdistdir}/doc/latex/tex-label/tex-label-doc.tex
-#- source
-%doc %{_texmfdistdir}/source/latex/tex-label/Makefile
-
-#-----------------------------------------------------------------------
-%prep
-%setup -c -a1 -a2
-%autopatch -p1
-
-%build
-
-%install
-mkdir -p %{buildroot}%{_texmfdistdir}
-cp -fpar tex doc source %{buildroot}%{_texmfdistdir}
